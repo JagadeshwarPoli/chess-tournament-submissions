@@ -5,9 +5,11 @@
 
 <div class="layout-shell">
   <Navbar />
+
   <div class="layout-content">
     <Sidebar />
-    <main>
+
+    <main class="page-content">
       <slot />
     </main>
   </div>

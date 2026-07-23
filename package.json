@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "dev": "npm --prefix chess-tournament run dev",
+    "build": "npm --prefix chess-tournament run build",
+    "preview": "npm --prefix chess-tournament run preview"
+  },
   "dependencies": {
     "svelte-routing": "^2.13.0"
   }
