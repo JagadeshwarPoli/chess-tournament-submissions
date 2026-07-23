@@ -373,8 +373,82 @@ input {
   gap: 0.75rem;
 }
 
+.matcher-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 1rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field span {
+  font-weight: 700;
+  color: #334155;
+}
+
+.field select {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.8rem;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+}
+
+.round-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.round-card {
+  padding: 0.9rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.9rem;
+  background: #f8fafc;
+}
+
+.round-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.match-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.8rem 0.9rem;
+  border-radius: 0.7rem;
+  background: white;
+}
+
+.match-card {
+  padding: 0.85rem 0.95rem;
+  border-radius: 0.9rem;
+  background: linear-gradient(135deg, #eff6ff, #f8fafc);
+}
+
+.champion-banner {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.9rem;
+  background: #fef3c7;
+  color: #92400e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 @media (max-width: 900px) {
   .grid-two {
+    grid-template-columns: 1fr;
+  }
+
+  .matcher-grid {
     grid-template-columns: 1fr;
   }
 
