@@ -79,6 +79,53 @@ const tournamentService = {
     return readTournaments().find((tournament) => tournament.id === id) || null;
   },
   saveToLocalStorage: (tournaments) => writeTournaments(tournaments),
+  assignPlayerToTournament: (tournamentId, playerId) => {
+    const tournaments = readTournaments();
+    const nextTournaments = tournaments.map((tournament) => {
+      if (tournament.id !== tournamentId) {
+        return tournament;
+      }
+
+      const playerIds = Array.isArray(tournament.players) ? tournament.players : [];
+      if (playerIds.includes(playerId)) {
+        return tournament;
+      }
+
+      return {
+        ...tournament,
+        players: [...playerIds, playerId],
+      };
+    });
+
+    return writeTournaments(nextTournaments);
+  },
+  removePlayerFromTournament: (tournamentId, playerId) => {
+    const tournaments = readTournaments();
+    const nextTournaments = tournaments.map((tournament) => {
+      if (tournament.id !== tournamentId) {
+        return tournament;
+      }
+
+      const playerIds = Array.isArray(tournament.players) ? tournament.players : [];
+      return {
+        ...tournament,
+        players: playerIds.filter((id) => id !== playerId),
+      };
+    });
+
+    return writeTournaments(nextTournaments);
+  },
+  getAssignedPlayers: (tournamentId, players = []) => {
+    const tournament = readTournaments().find((item) => item.id === tournamentId);
+    const tournamentPlayerIds = Array.isArray(tournament?.players) ? tournament.players : [];
+
+    return players.filter((player) => tournamentPlayerIds.includes(player.id));
+  },
+  isPlayerAssigned: (tournamentId, playerId) => {
+    const tournament = readTournaments().find((item) => item.id === tournamentId);
+    const playerIds = Array.isArray(tournament?.players) ? tournament.players : [];
+    return playerIds.includes(playerId);
+  },
 };
 
 export default tournamentService;

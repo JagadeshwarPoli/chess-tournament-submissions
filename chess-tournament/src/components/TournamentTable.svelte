@@ -42,6 +42,9 @@
                   <button class="table-button delete" type="button" on:click={() => dispatch('delete', tournament.id)}>
                     Delete
                   </button>
+                  <button class="table-button assign" type="button" on:click={() => dispatch('assign', tournament)}>
+                    Assign
+                  </button>
                 </div>
               </td>
             </tr>

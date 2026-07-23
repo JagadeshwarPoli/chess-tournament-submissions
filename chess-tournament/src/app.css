@@ -326,6 +326,53 @@ input {
   color: #b91c1c;
 }
 
+.table-button.assign {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.stack-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.modal-card {
+  width: min(560px, 100%);
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+}
+
+.modal-list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 1rem 0;
+}
+
+.selector-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
 @media (max-width: 900px) {
   .grid-two {
     grid-template-columns: 1fr;
