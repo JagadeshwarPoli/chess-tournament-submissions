@@ -28,6 +28,7 @@ const mapPlayersToNames = (matches = []) => {
 };
 
 const matchService = {
+  getAllMatches: () => readMatches(),
   shufflePlayers: (players = []) => {
     const nextPlayers = [...players];
 

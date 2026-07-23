@@ -1,5 +1,8 @@
 <script>
+  /** @type {string} */
   export let title = 'Ranking';
+
+  /** @type {{ id?: string; name?: string; rating?: number; country?: string } | null} */
   export let player = null;
 </script>
 

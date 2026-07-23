@@ -349,6 +349,8 @@ input {
 
 .modal-card {
   width: min(560px, 100%);
+  max-height: min(85vh, 700px);
+  overflow: auto;
   background: white;
   border-radius: 1rem;
   padding: 1rem;

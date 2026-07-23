@@ -23,7 +23,7 @@
     currentId = null;
   };
 
-  /** @type {(value: { id?: string; name?: string; title?: string; rating?: number } | null) => void} */
+  /** @type {(value: { id?: string; name?: string; title?: string; rating?: number; country?: string } | null) => void} */
   const applyPlayer = (value) => {
     if (!value) {
       resetForm();

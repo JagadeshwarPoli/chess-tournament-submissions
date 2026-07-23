@@ -96,8 +96,7 @@
     closeAssignModal();
   };
 
-  const assignedPlayers = tournamentService.getAssignedPlayers(selectedTournament?.id, allPlayers);
-
+  $: assignedPlayers = tournamentService.getAssignedPlayers(selectedTournament?.id, allPlayers);
   $: filteredTournaments = tournamentService.searchTournaments(tournaments, searchTerm);
 </script>
 

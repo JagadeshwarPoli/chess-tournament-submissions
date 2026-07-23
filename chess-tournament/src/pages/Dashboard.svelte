@@ -1,23 +1,37 @@
 <script>
   import { onMount } from 'svelte';
+  import playerService from '../services/playerService.js';
   import tournamentService from '../services/tournamentService.js';
+  import matchService from '../services/matchService.js';
+  import rankingService from '../services/rankingService.js';
 
+  let totalPlayers = 0;
   let totalTournaments = 0;
+  let totalMatches = 0;
+  let totalChampions = 0;
 
-  const refreshCount = () => {
-    totalTournaments = tournamentService.getAllTournaments().length;
+  const refreshStats = () => {
+    const players = playerService.getPlayers();
+    const tournaments = tournamentService.getAllTournaments();
+    const allMatches = matchService.getAllMatches();
+    const rankingEntries = rankingService.getRankings();
+
+    totalPlayers = players.length;
+    totalTournaments = tournaments.length;
+    totalMatches = Array.isArray(allMatches) ? allMatches.length : 0;
+    totalChampions = rankingEntries.length;
   };
 
   onMount(() => {
-    refreshCount();
-    const sync = () => refreshCount();
+    refreshStats();
+    const sync = () => refreshStats();
     window.addEventListener('storage', sync);
 
     return () => window.removeEventListener('storage', sync);
   });
 
   $: if (typeof window !== 'undefined') {
-    totalTournaments = tournamentService.getAllTournaments().length;
+    refreshStats();
   }
 </script>
 
@@ -33,20 +47,20 @@
 
   <div class="stats-grid">
     <article class="stat-card">
-      <span>Players</span>
-      <strong>128</strong>
+      <span>👤 Total Players</span>
+      <strong>{totalPlayers}</strong>
     </article>
     <article class="stat-card">
-      <span>Total Tournaments</span>
+      <span>🏆 Total Tournaments</span>
       <strong>{totalTournaments}</strong>
     </article>
     <article class="stat-card">
-      <span>Matches</span>
-      <strong>46</strong>
+      <span>⚔ Total Matches</span>
+      <strong>{totalMatches}</strong>
     </article>
     <article class="stat-card">
-      <span>Live Rankings</span>
-      <strong>#3</strong>
+      <span>🥇 Champions</span>
+      <strong>{totalChampions}</strong>
     </article>
   </div>
 </section>

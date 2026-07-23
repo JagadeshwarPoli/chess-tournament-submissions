@@ -1,5 +1,5 @@
 <script>
-  import { link } from 'svelte-spa-router';
+  import { onMount } from 'svelte';
 
   const navItems = [
     { label: 'Dashboard', href: '/dashboard' },
@@ -8,6 +8,20 @@
     { label: 'Matches', href: '/matches' },
     { label: 'Rankings', href: '/rankings' },
   ];
+
+  let currentPath = '/dashboard';
+
+  const syncPath = () => {
+    const hash = window.location.hash || '#/dashboard';
+    currentPath = hash.startsWith('#/') ? hash.slice(1) : hash;
+  };
+
+  onMount(() => {
+    syncPath();
+    window.addEventListener('hashchange', syncPath);
+
+    return () => window.removeEventListener('hashchange', syncPath);
+  });
 </script>
 
 <aside class="sidebar">
@@ -18,7 +32,7 @@
 
   <nav class="sidebar-nav">
     {#each navItems as item}
-      <a href={item.href} use:link class="sidebar-link">
+      <a href={'#' + item.href} class:active={currentPath === item.href} class="sidebar-link">
         {item.label}
       </a>
     {/each}
