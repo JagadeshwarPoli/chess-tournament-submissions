@@ -1,16 +1,17 @@
 <script>
   import { createEventDispatcher } from 'svelte';
 
-  /** @type {{ id?: string; name?: string; title?: string; rating?: number } | null} */
+  /** @type {{ id?: string; name?: string; title?: string; rating?: number; country?: string } | null} */
   export let player = null;
 
   const dispatch = createEventDispatcher();
 
-  /** @type {{ name: string; title: string; rating: number }} */
+  /** @type {{ name: string; title: string; rating: number; country: string }} */
   let form = {
     name: '',
     title: '',
     rating: 0,
+    country: '',
   };
 
   /** @type {string | null} */
@@ -18,7 +19,7 @@
 
   /** @type {() => void} */
   const resetForm = () => {
-    form = { name: '', title: '', rating: 0 };
+    form = { name: '', title: '', rating: 0, country: '' };
     currentId = null;
   };
 
@@ -34,6 +35,7 @@
       name: value.name || '',
       title: value.title || '',
       rating: value.rating || 0,
+      country: value.country || '',
     };
   };
 
@@ -50,6 +52,7 @@
       name: form.name.trim(),
       title: form.title.trim(),
       rating: Number(form.rating) || 0,
+      country: form.country.trim(),
     });
   };
 </script>
@@ -73,6 +76,11 @@
     <label>
       <span>Rating</span>
       <input bind:value={form.rating} type="number" min="0" placeholder="1800" />
+    </label>
+
+    <label>
+      <span>Country</span>
+      <input bind:value={form.country} type="text" placeholder="e.g. India" />
     </label>
 
     <button class="primary-button" type="submit">

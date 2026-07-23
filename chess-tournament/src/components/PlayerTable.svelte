@@ -22,6 +22,7 @@
             <th>Name</th>
             <th>Title</th>
             <th>Rating</th>
+            <th>Country</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -31,6 +32,7 @@
               <td>{player.name}</td>
               <td>{player.title || '—'}</td>
               <td>{player.rating || 0}</td>
+              <td>{player.country || 'Unknown'}</td>
               <td>
                 <div class="row-actions">
                   <button class="table-button edit" type="button" on:click={() => dispatch('edit', player)}>

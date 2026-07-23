@@ -4,9 +4,9 @@ import { randomId } from '../utils/random.js';
 const PLAYERS_KEY = 'chess-players';
 
 const defaultPlayers = [
-  { id: 'p1', name: 'Aisha Khan', title: 'International Master', rating: 2024 },
-  { id: 'p2', name: 'Liam Brooks', title: 'Grandmaster', rating: 1948 },
-  { id: 'p3', name: 'Sofia Martinez', title: 'FIDE Master', rating: 1896 },
+  { id: 'p1', name: 'Aisha Khan', title: 'International Master', rating: 2024, country: 'India' },
+  { id: 'p2', name: 'Liam Brooks', title: 'Grandmaster', rating: 1948, country: 'United Kingdom' },
+  { id: 'p3', name: 'Sofia Martinez', title: 'FIDE Master', rating: 1896, country: 'Spain' },
 ];
 
 const readPlayers = () => {
@@ -28,6 +28,7 @@ const playerService = {
       id: randomId(),
       ...player,
       rating: Number(player.rating) || 0,
+      country: player.country?.trim() || 'Unknown',
     };
 
     return writePlayers([...players, nextPlayer]);
@@ -40,6 +41,7 @@ const playerService = {
             ...player,
             ...updates,
             rating: Number(updates.rating) || 0,
+            country: updates.country?.trim() || player.country || 'Unknown',
           }
         : player
     );

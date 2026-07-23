@@ -443,12 +443,35 @@ input {
   gap: 1rem;
 }
 
+.podium-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.podium-card,
+.rank-card {
+  padding: 1rem;
+  border-radius: 0.9rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.place-label {
+  font-weight: 800;
+  color: #0f172a;
+}
+
 @media (max-width: 900px) {
   .grid-two {
     grid-template-columns: 1fr;
   }
 
   .matcher-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .podium-grid {
     grid-template-columns: 1fr;
   }
 
